@@ -1,0 +1,53 @@
+Datos Utiles
+
+#Funciones
+1. Buscar paises
+2.Filtrarlos / Ordenarlos
+3. Crear actividades turísticas
+
+
+# Endpoints/Flags
+GET https://restcountries.com/v3.1/all
+GET https://restcountries.com/v3.1/name/{name}
+GET https://restcountries.com/v3.1/alpha/{code}
+
+#Tareas a realizar:
+
+1. Base de Datos
+2. Backend
+3. Frontend
+
+#Estructura api
+
+-https://restcountries.com/v3.1/name/peru =
+{
+    name(objeto)[common,official,nativeName],
+    flag(string)[emoji bandera]
+    flags(objeto)[png,svg],
+    continente = region(string)[nombre continente],
+    subregion(string)[nombre subregion]
+    capital(array)[string nombre],
+    area(number)[numero con un decimal],
+    poblacion(number)[numero con un decimal]
+}
+
+#Frontend
+
+##Rutas
+
+'/'
+App.js
+
+'/home'
+home.js
+
+'/paises/:pais'
+CompletoPais.js
+
+'/actividades/crear'
+CrearActividad.js
+
+
+//Posibles extras
+'/actividades/'
+ListaActividades.js
