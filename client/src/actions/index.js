@@ -1,14 +1,71 @@
-import axios from "axios"
-import { GET_PAISES } from "../actions/actions-names"
+import {
+  GET_PAISES,
+  PAIS_DETALLE,
+  FILTER_BACK,
+} from "../actions/actions-names";
 
-export async function addPaises() {
-    //crear funcion axios para traer datos de la base de datos
+//Agregar paises
+export function addPaises(paises) {
+  return {
+    type: GET_PAISES,
+    value: paises,
+  };
+}
 
-    return function (dispatch) {
-        return fetch(`http://localhost:3004/api/countries/`)
-            .then((response) => response.json())
-            .then((json) => {
-                dispatch({ type: GET_PAISES, value: json });
-            });
-    };
+export function axiosPaises() {
+  //crear funcion axios para traer datos de la base de datos
+  return (dispatch) => {
+    fetch("http://192.168.0.133:3004/api/countries/")
+      .then((response) => response.json())
+      .then((paises) => {
+        dispatch(addPaises(paises));
+      });
+  };
+}
+
+//Pais detalle
+export function paisDetalle(pais) {
+  return {
+    type: PAIS_DETALLE,
+    value: pais,
+  };
+}
+
+export function fetchPais(id) {
+  //crear funcion axios para traer datos de la base de datos
+  return (dispatch) => {
+    fetch(`http://192.168.0.133:3004/api/countries/${id}`)
+      .then((response) => response.json())
+      .then((pais) => {
+        dispatch(paisDetalle(pais));
+      });
+  };
+}
+
+
+//Filtros del back 
+
+export function filterBack(paises) {
+  return {
+    type: FILTER_BACK,
+    value: paises,
+  };
+}
+
+export function fetchFilterContinente(continente) {
+  //crear funcion axios para traer datos de la base de datos
+ /*  let url = [];
+  if (name !== false) url.push(`name=${name}`);
+  if (continente !== false) url.push(`continent=${continente}`);
+  let urlString = url.toString().replaceAll(",", "&") */
+
+  return (dispatch) => {
+    fetch(
+      `http://localhost:3004/api/countries?continent=${continente}`
+    )
+      .then((response) => response.json())
+      .then((paises) => {
+        dispatch(filterBack(paises));
+      });
+  };
 }

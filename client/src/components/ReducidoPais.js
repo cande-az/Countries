@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function ReducidoPais({ nombre, continente, imgBandera }) {
+function ReducidoPais({ id,nombre, continente, imgBandera }) {
     return (
         <div>
-            <Link to={`/s/paises/${nombre}`}>
+            <Link to={`/s/paises/${id}`}>
                 <h2>{nombre}</h2>
             </Link>
 

@@ -1,18 +1,11 @@
 import React from "react";
 import ReducidoPais from "./ReducidoPais";
 import { connect } from "react-redux";
-import {axiosPaises} from "../actions/index"
 
-function ListaPaises({ paises,axiosPaises }) {
-
-  React.useEffect(() => {
-    axiosPaises()
-  }, [axiosPaises]);
-
+function ListaPsFiltrada({ paises_filtrados }) {
   return (
     <div>
-      while(paises.length){}
-      {paises.map((p) => (
+      {paises_filtrados[0].map((p) => (
         <ReducidoPais
           key={p.id}
           id={p.id}
@@ -27,8 +20,8 @@ function ListaPaises({ paises,axiosPaises }) {
 
 const mapStateToProps = (state) => {
   return {
-    paises: state.paises,
+    paises_filtrados: state.paises_filtrados,
   };
 };
 
-export default connect(mapStateToProps,{axiosPaises})(ListaPaises);
+export default connect(mapStateToProps)(ListaPsFiltrada);

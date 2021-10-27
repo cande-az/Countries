@@ -32,7 +32,7 @@ ReactDOM.render(
           <Home />
         </Route>
 
-        <Route path="/s/paises/:pais">
+        <Route path="/s/paises/:id">
           <CompletoPais />
         </Route>
 
