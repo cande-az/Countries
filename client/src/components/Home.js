@@ -1,22 +1,68 @@
 import React from "react";
-import ListaPaises from "./ListaPaises";
-import ListaPsFiltrada from "./ListaPsFiltrada"
+
 import { connect } from "react-redux";
 import { fetchFilterContinente } from "../actions/index";
+import ListaMadrePaises from "./ListaMadrePaises";
 
-function Home({ fetchFilterContinente, paises_filtrados }) {
+function Home({ paises, paises_filtrados }) {
   const[filtrado, setFiltrado] =React.useState(false)
+  const[ordenado, setOrdenadoo] =React.useState(false)
+  const[continente, setContinente] =React.useState('')
+
 
   function handleOnChange(e) {
     e.preventDefault();
     //console.log(e.target.name)
-    fetchFilterContinente(e.target.name);
+    setContinente(e.target.name);
     setFiltrado(true)
   }
 
   function handleOnClick(e) {
     e.preventDefault();
     console.log("hola");
+  }
+
+  function ordenAsc(e,paises){
+    e.preventDefault();
+    if(filtrado){
+      paises_filtrados.sort(function (paisA, paisB) {
+        if (paisA.nombre < paisB.nombre) {
+          return 1;
+        }
+        if (paisA.nombre > paisB.nombre) {
+          return -1;
+        }
+        return 0;
+      })
+    } else{
+      paises.sort(function (paisA, paisB) {
+        if (paisA.nombre < paisB.nombre) {
+          return 1;
+        }
+        if (paisA.nombre > paisB.nombre) {
+          return -1;
+        }
+        return 0;
+      })
+    }
+    
+    setOrdenadoo(true)
+    console.log(paises)
+  }
+
+    function ordenDes(e,paises){
+    e.preventDefault();
+    paises.sort(function (paisA, paisB) {
+      if (paisA.nombre > paisB.nombre) {
+        return 1;
+      }
+      if (paisA.nombre < paisB.nombre) {
+        return -1;
+      }
+      return 0;
+    })
+    setOrdenadoo(true)
+    console.log(paises)
   }
 
   return (
@@ -80,20 +126,27 @@ function Home({ fetchFilterContinente, paises_filtrados }) {
       <button>dificultad o tipos?</button>
 
       <h4>Ordenar</h4>
-      <button>Asc</button>
-      <button>Desc</button>
+      <form onChange={(e) => handleOnClick(e)}>
+      <button onClick={(e)=>(ordenAsc(e,paises))}>Asc</button>
+      <button onClick={(e)=>(ordenDes(e,paises))}>Desc</button>
+      </form>
+
       <h3>Paises</h3>
 
-      {filtrado ? <ListaPsFiltrada/> : <ListaPaises />}
-
+      <ListaMadrePaises
+      filter={filtrado}
+      ordenado={ordenado}
+      nombreCon={continente}/>
+     
       <p>ARMAR PAGINADO</p>
     </div>
   );
 }
 const mapStateToProps = (state) => {
   return {
+    paises: state.paises,
     paises_filtrados: state.paises_filtrados,
   };
 };
 
-export default connect(mapStateToProps, { fetchFilterContinente })(Home);
+export default connect(mapStateToProps)(Home);

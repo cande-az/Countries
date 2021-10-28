@@ -1,26 +1,38 @@
 import React from "react";
 import ReducidoPais from "./ReducidoPais";
 import { connect } from "react-redux";
-import {axiosPaises} from "../actions/index"
+import { axiosPaises, orderFront } from "../actions/index"
 
-function ListaPaises({ paises,axiosPaises }) {
+function ListaPaises({ ordenando,paises, axiosPaises }) {
+const [carga,setCarga] = React.useState(false)
 
   React.useEffect(() => {
     axiosPaises()
+    setCarga(true)
   }, [axiosPaises]);
 
   return (
     <div>
-      while(paises.length){}
-      {paises.map((p) => (
-        <ReducidoPais
-          key={p.id}
-          id={p.id}
-          nombre={p.nombre}
-          continente={p.continente}
-          imgBandera={p.imagen_de_la_bandera}
-        />
-      ))}
+      {carga && ordenando ?
+    paises.map((p) => (
+      <ReducidoPais
+        key={p.id}
+        id={p.id}
+        nombre={p.nombre}
+        continente={p.continente}
+        imgBandera={p.imagen_de_la_bandera}
+      />
+      )) :
+      paises.map((p) => (
+      <ReducidoPais
+        key={p.id}
+        id={p.id}
+        nombre={p.nombre}
+        continente={p.continente}
+        imgBandera={p.imagen_de_la_bandera}
+      />
+      ))
+    }
     </div>
   );
 }
@@ -28,7 +40,8 @@ function ListaPaises({ paises,axiosPaises }) {
 const mapStateToProps = (state) => {
   return {
     paises: state.paises,
+    filtro: state.filterAD
   };
 };
 
-export default connect(mapStateToProps,{axiosPaises})(ListaPaises);
+export default connect(mapStateToProps, { axiosPaises,orderFront })(ListaPaises);

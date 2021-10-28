@@ -61,11 +61,19 @@ export function fetchFilterContinente(continente) {
 
   return (dispatch) => {
     fetch(
-      `http://localhost:3004/api/countries?continent=${continente}`
+      "http://192.168.0.133:3004/api/countries?continent=" + continente
     )
       .then((response) => response.json())
       .then((paises) => {
         dispatch(filterBack(paises));
       });
+  };
+}
+
+//Order front
+export function orderFront(orden) {
+  return {
+    type: FILTER_BACK,
+    value: orden,
   };
 }
