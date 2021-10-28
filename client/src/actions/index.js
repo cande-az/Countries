@@ -15,7 +15,7 @@ export function addPaises(paises) {
 export function axiosPaises() {
   //crear funcion axios para traer datos de la base de datos
   return (dispatch) => {
-    fetch("http://192.168.0.133:3004/api/countries/")
+    fetch("http://localhost:3004/api/countries/")
       .then((response) => response.json())
       .then((paises) => {
         dispatch(addPaises(paises));
@@ -34,7 +34,7 @@ export function paisDetalle(pais) {
 export function fetchPais(id) {
   //crear funcion axios para traer datos de la base de datos
   return (dispatch) => {
-    fetch(`http://192.168.0.133:3004/api/countries/${id}`)
+    fetch(`http://localhost:3004/api/countries/${id}`)
       .then((response) => response.json())
       .then((pais) => {
         dispatch(paisDetalle(pais));
@@ -61,10 +61,11 @@ export function fetchFilterContinente(continente) {
 
   return (dispatch) => {
     fetch(
-      "http://192.168.0.133:3004/api/countries?continent=" + continente
+      `http://localhost:3004/api/countries?continent=${continente}`
     )
       .then((response) => response.json())
       .then((paises) => {
+        console.log(paises)
         dispatch(filterBack(paises));
       });
   };

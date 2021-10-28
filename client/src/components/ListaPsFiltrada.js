@@ -3,17 +3,19 @@ import ReducidoPais from "./ReducidoPais";
 import { fetchFilterContinente } from "../actions/index";
 import { connect } from "react-redux";
 
-function ListaPsFiltrada({ nombreCon,ordenando,paises_filtrados }) {
+function ListaPsFiltrada({ paises_filtrados,nombreCon,ordenado,fetchFilterContinente }) {
   const [carga,setCarga] = React.useState(false)
 
   React.useEffect(() => {
     fetchFilterContinente(nombreCon)
+    console.log(nombreCon)
+    //esperar a que se carge y recien hacer el map
     setCarga(true)
-  }, [fetchFilterContinente]);
+  }, [nombreCon,fetchFilterContinente]);
 
   return (
     <div>
-      {ordenando ? paises_filtrados[0].map((p) => (
+      {carga && ordenado ? paises_filtrados.map((p) => (
         <ReducidoPais
           key={p.id}
           id={p.id}
@@ -22,7 +24,7 @@ function ListaPsFiltrada({ nombreCon,ordenando,paises_filtrados }) {
           imgBandera={p.imagen_de_la_bandera}
         />
       )):
-      paises_filtrados[0].map((p) => (
+      paises_filtrados.map((p) => (
         <ReducidoPais
           key={p.id}
           id={p.id}

@@ -52,7 +52,7 @@ app.get("/", async (req, res) => {
       return paisesFiltrados.indexOf(pais) === indice
     });
 
-    if(paisesFiltradosSR.length > 0) res.send(paisesFiltradosSR)
+    if(paisesFiltradosSR.length > 0) res.send(paisesFiltradosSR[0])
     else{res.status(404).send({ message: "No hay resultados" });}
   }
 

@@ -27,7 +27,7 @@ function reducer(state = initialState, action) {
     case FILTER_BACK:
       return {
         ...state,
-        paises_filtrados: action.value,
+        paises_filtrados: action.value
       };
     case ORDER_FRONT:
       return {

@@ -1,12 +1,11 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import { fetchFilterContinente } from "../actions/index";
 import ListaMadrePaises from "./ListaMadrePaises";
 
 function Home({ paises, paises_filtrados }) {
-  const[filtrado, setFiltrado] =React.useState(false)
-  const[ordenado, setOrdenadoo] =React.useState(false)
+  const[filtrado, setFiltrado] =React.useState(undefined)
+  const[ordenado, setOrdenado] =React.useState(false)
   const[continente, setContinente] =React.useState('')
 
 
@@ -46,22 +45,35 @@ function Home({ paises, paises_filtrados }) {
       })
     }
     
-    setOrdenadoo(true)
+    setOrdenado(true)
     console.log(paises)
   }
 
     function ordenDes(e,paises){
     e.preventDefault();
-    paises.sort(function (paisA, paisB) {
-      if (paisA.nombre > paisB.nombre) {
-        return 1;
-      }
-      if (paisA.nombre < paisB.nombre) {
-        return -1;
-      }
-      return 0;
-    })
-    setOrdenadoo(true)
+    if(filtrado){
+      paises_filtrados.sort(function (paisA, paisB) {
+        if (paisA.nombre > paisB.nombre) {
+          return 1;
+        }
+        if (paisA.nombre < paisB.nombre) {
+          return -1;
+        }
+        return 0;
+      })
+    } else {
+      paises.sort(function (paisA, paisB) {
+        if (paisA.nombre > paisB.nombre) {
+          return 1;
+        }
+        if (paisA.nombre < paisB.nombre) {
+          return -1;
+        }
+        return 0;
+      })
+    }
+
+    setOrdenado(false)
     console.log(paises)
   }
 
@@ -120,7 +132,6 @@ function Home({ paises, paises_filtrados }) {
           Antarctic
         </button>
       </form>
-      {console.log(paises_filtrados[0])}
 
       <h5>Tipo de Actividad</h5>
       <button>dificultad o tipos?</button>
