@@ -2,6 +2,7 @@ import {
   GET_PAISES,
   PAIS_DETALLE,
   FILTER_BACK,
+  BUSQUEDA
 } from "../actions/actions-names";
 
 //Agregar paises
@@ -71,10 +72,10 @@ export function fetchFilterContinente(continente) {
   };
 }
 
-//Order front
-export function orderFront(orden) {
+//Busqueda
+export function setBusqueda(busqueda) {
   return {
-    type: FILTER_BACK,
-    value: orden,
+    type: BUSQUEDA,
+    value: busqueda,
   };
 }

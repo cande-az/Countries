@@ -2,14 +2,16 @@ import {
   GET_PAISES,
   PAIS_DETALLE,
   FILTER_BACK,
-  ORDER_FRONT
+  BUSQUEDA
 } from "../actions/actions-names";
 
 const initialState = {
   paises: [],
+  oriPaises: [],
   detallePais: [],
+  oriPaises_filtrados:[],
   paises_filtrados: [],
-  filterA: true
+  busqTerm: ''
 };
 
 function reducer(state = initialState, action) {
@@ -18,6 +20,7 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         paises: action.value,
+        oriPaises: action.value,
       };
     case PAIS_DETALLE:
       return {
@@ -27,12 +30,13 @@ function reducer(state = initialState, action) {
     case FILTER_BACK:
       return {
         ...state,
-        paises_filtrados: action.value
+        paises_filtrados: action.value,
+        oriPaises_filtrados:action.value
       };
-    case ORDER_FRONT:
+    case BUSQUEDA:
       return {
         ...state,
-        filterA: action.value,
+        busqTerm: action.value,
       };
     default:
       return state;

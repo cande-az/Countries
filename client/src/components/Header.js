@@ -1,7 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { setBusqueda } from "../actions/index";
 
-function Header() {
+function Header({ setBusqueda }) {
+  function HandleOnChange(e) {
+    setBusqueda(e.target.value)
+  }
+
   return (
     <>
       <Link to="/s/home">
@@ -10,11 +16,23 @@ function Header() {
 
       <div>
         <h3>buscar</h3>
-        <input></input>
+        <input
+          onChange={(e) => {
+            HandleOnChange(e);
+          }}
+        ></input>
         <button>buscar</button>
       </div>
     </>
   );
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    paises: state.paises,
+    filtro: state.filterAD,
+    oriPaises: state.oriPaises,
+  };
+};
+
+export default connect(mapStateToProps, { setBusqueda })(Header);

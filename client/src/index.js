@@ -5,7 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 //Componentes
-import Home from "./components/Home";
+import Home from "./components/Home/Home";
 import App from "./App";
 import CompletoPais from "./components/CompletoPais"
 import CrearActividad from "./components/CrearActividad"

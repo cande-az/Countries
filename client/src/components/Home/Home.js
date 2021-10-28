@@ -1,17 +1,18 @@
 import React from "react";
 
+import{ordenAsc,ordenDes} from "./FunOrdenamiento"
 import { connect } from "react-redux";
-import ListaMadrePaises from "./ListaMadrePaises";
+import ListaMadrePaises from "../ListaMadrePaises";
+//import { axiosPaises } from "../actions/index";
 
-function Home({ paises, paises_filtrados }) {
-  const[filtrado, setFiltrado] =React.useState(undefined)
-  const[ordenado, setOrdenado] =React.useState(false)
+function Home({ paises, paises_filtrados,busqTerm }) {
+  const[filtrado, setFiltrado] =React.useState('desactivado')
+  const[ordenado, setOrdenado] =React.useState('desactivado')
   const[continente, setContinente] =React.useState('')
 
 
   function handleOnChange(e) {
     e.preventDefault();
-    //console.log(e.target.name)
     setContinente(e.target.name);
     setFiltrado(true)
   }
@@ -19,62 +20,6 @@ function Home({ paises, paises_filtrados }) {
   function handleOnClick(e) {
     e.preventDefault();
     console.log("hola");
-  }
-
-  function ordenAsc(e,paises){
-    e.preventDefault();
-    if(filtrado){
-      paises_filtrados.sort(function (paisA, paisB) {
-        if (paisA.nombre < paisB.nombre) {
-          return 1;
-        }
-        if (paisA.nombre > paisB.nombre) {
-          return -1;
-        }
-        return 0;
-      })
-    } else{
-      paises.sort(function (paisA, paisB) {
-        if (paisA.nombre < paisB.nombre) {
-          return 1;
-        }
-        if (paisA.nombre > paisB.nombre) {
-          return -1;
-        }
-        return 0;
-      })
-    }
-    
-    setOrdenado(true)
-    console.log(paises)
-  }
-
-    function ordenDes(e,paises){
-    e.preventDefault();
-    if(filtrado){
-      paises_filtrados.sort(function (paisA, paisB) {
-        if (paisA.nombre > paisB.nombre) {
-          return 1;
-        }
-        if (paisA.nombre < paisB.nombre) {
-          return -1;
-        }
-        return 0;
-      })
-    } else {
-      paises.sort(function (paisA, paisB) {
-        if (paisA.nombre > paisB.nombre) {
-          return 1;
-        }
-        if (paisA.nombre < paisB.nombre) {
-          return -1;
-        }
-        return 0;
-      })
-    }
-
-    setOrdenado(false)
-    console.log(paises)
   }
 
   return (
@@ -138,12 +83,14 @@ function Home({ paises, paises_filtrados }) {
 
       <h4>Ordenar</h4>
       <form onChange={(e) => handleOnClick(e)}>
-      <button onClick={(e)=>(ordenAsc(e,paises))}>Asc</button>
-      <button onClick={(e)=>(ordenDes(e,paises))}>Desc</button>
+      <button onClick={(e)=>(ordenAsc(e,paises,paises_filtrados,filtrado,setOrdenado))}>Asc</button>
+      <button onClick={(e)=>(ordenDes(e,paises,paises_filtrados,filtrado,setOrdenado))}>Desc</button>
       </form>
 
       <h3>Paises</h3>
+{
 
+}
       <ListaMadrePaises
       filter={filtrado}
       ordenado={ordenado}
@@ -157,6 +104,8 @@ const mapStateToProps = (state) => {
   return {
     paises: state.paises,
     paises_filtrados: state.paises_filtrados,
+    busqTerm: state.busqTerm,
+
   };
 };
 

@@ -1,39 +1,31 @@
 import React from "react";
 import ReducidoPais from "./ReducidoPais";
 import { connect } from "react-redux";
-import { axiosPaises, orderFront } from "../actions/index";
+import { axiosPaises } from "../actions/index";
 
-function ListaPaises({ ordenando, paises, axiosPaises }) {
+function ListaPaises({ ordenando, paises, axiosPaises, busqTerm }) {
   const [carga, setCarga] = React.useState(false);
 
   React.useEffect(() => {
     axiosPaises();
     setCarga(true);
-  }, [axiosPaises]);
-
+    console.log(busqTerm)
+  }, [axiosPaises,busqTerm]);
 
   return (
     <div>
-      {carga && ordenando === undefined
-        ? paises.map((p) => (
-            <ReducidoPais
-              key={p.id}
-              id={p.id}
-              nombre={p.nombre}
-              continente={p.continente}
-              imgBandera={p.imagen_de_la_bandera}
-            />
-          ))
-        : !ordenando
-        ? paises.map((p) => (
-            <ReducidoPais
-              key={p.id}
-              id={p.id}
-              nombre={p.nombre}
-              continente={p.continente}
-              imgBandera={p.imagen_de_la_bandera}
-            />
-          ))
+      {busqTerm
+        ? paises
+            .filter((p) => p.nombre.includes(busqTerm) || !busqTerm)
+            .map((p) => (
+              <ReducidoPais
+                key={p.id}
+                id={p.id}
+                nombre={p.nombre}
+                continente={p.continente}
+                imgBandera={p.imagen_de_la_bandera}
+              />
+            ))
         : paises.map((p) => (
             <ReducidoPais
               key={p.id}
@@ -42,8 +34,7 @@ function ListaPaises({ ordenando, paises, axiosPaises }) {
               continente={p.continente}
               imgBandera={p.imagen_de_la_bandera}
             />
-          ))
-        }
+          ))}
     </div>
   );
 }
@@ -52,9 +43,8 @@ const mapStateToProps = (state) => {
   return {
     paises: state.paises,
     filtro: state.filterAD,
+    busqTerm: state.busqTerm,
   };
 };
 
-export default connect(mapStateToProps, { axiosPaises, orderFront })(
-  ListaPaises
-);
+export default connect(mapStateToProps, { axiosPaises })(ListaPaises);
