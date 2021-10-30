@@ -5,9 +5,9 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 //Componentes
-import Home from "./components/Home/Home";
+import Home from "./components/Home";
 import App from "./App";
-import CompletoPais from "./components/CompletoPais"
+import DetallePais from "./components/DetallePais"
 import CrearActividad from "./components/CrearActividad"
 import Header from "./components/Header"
 import store from "./store/index.js";
@@ -32,9 +32,9 @@ ReactDOM.render(
           <Home />
         </Route>
 
-        <Route path="/s/paises/:id">
-          <CompletoPais />
-        </Route>
+        {<Route path="/s/paises/:id">
+          <DetallePais />
+        </Route>}
 
         <Route path='/s/actividades/crear'>
           <CrearActividad />

@@ -1,25 +1,39 @@
-import React from 'react'
+import React from "react";
 
 function CrearActividad() {
-    return (
-        <div>
-            <form>
-                <label>Nombre</label>
+  return (
+    <div>
+      <form>
+        <section>
+          <label>Nombre</label>
+          <input></input>
+        </section>
 
-                <label>Dificultad</label>
+        <section>
+        <label>Dificultad</label>
+        <input></input>
+        </section>
 
-                <label>Duración</label>
+        <section>
+        <label>Duración</label>
+        <input></input>
+        </section>
 
-                <label>Temporada</label>
+        <section>
+        <label>Temporada</label>
+        <input></input>
+        </section>
 
-                <label>Paises</label>
-                {/* Buscar paises de un lista y agregarlos */}
+        <section>
+        <label>Paises</label>
+        <input></input>
+        </section>
+        {/* Buscar paises de un lista y agregarlos */}
 
-                <button type='submit'>Crear actividad</button>
-
-            </form>
-        </div>
-    )
+        <button type="submit">Crear actividad</button>
+      </form>
+    </div>
+  );
 }
 
-export default CrearActividad
+export default CrearActividad;

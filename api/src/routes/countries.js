@@ -1,7 +1,10 @@
 const express = require("express");
 const { Country } = require("../db");
-
 const app = express.Router();
+
+
+
+
 
 //prueba
 app.get("/p", (req, res) => {
@@ -10,6 +13,7 @@ app.get("/p", (req, res) => {
 
 app.get("/", async (req, res) => {
   // GETS FILTERS
+  const paises = await Country.findAll()
 
   // /countries?contiente="..."
   // valore segun select (6 continentes)
@@ -25,24 +29,22 @@ app.get("/", async (req, res) => {
       .toString()
       .replace(",", " ");
 
-    let pais = await Country.findAll({
-      where: {
-        nombre: nameCorrect,
-      },
-    });
-    paisesFiltrados.push(pais)
+    let paisesXName = await paises.filter((pais)=> 
+    pais.nombre.includes(nameCorrect)
+    );
+    paisesFiltrados.push(paisesXName)
     }
 
+
+    
     //Busqueda por continente
     if(req.query.continent){
       if(req.query.name){
         paisesFiltrados[0].continente !== req.query.continent && paisesFiltrados.shift()//.push({error: "Ese pais no pertenece a ese continente"})
       } else {
-        let paisesContinente = await Country.findAll({
-          where: {
-            continente: req.query.continent,
-          },
-        });
+        let paisesContinente = paises.filter((pais)=> 
+        pais.continente.includes(req.query.continent)
+        );
         paisesFiltrados.push(paisesContinente)
       }
     
@@ -56,24 +58,6 @@ app.get("/", async (req, res) => {
     else{res.status(404).send({ message: "No hay resultados" });}
   }
 
-  //GET /countries?name="..."
-  /*   if (req.query.name) {
-    let name = req.query.name;
-
-    //Si es minuscula...
-    let nameCorrect = name
-      .split(" ")
-      .map((p) => p.charAt(0).toLocaleUpperCase() + p.substr(1))
-      .toString()
-      .replace(",", " ");
-
-    let pais = await Country.findAll({
-      where: {
-        nombre: nameCorrect,
-      },
-    });
-    if (pais.length > 0) res.send(pais);
-    else res.status(404).send({ message: "No existe ese pais" }); */
   else {
     //GET /countries
     let paises = await Country.findAll();

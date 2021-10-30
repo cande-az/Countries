@@ -1,16 +1,11 @@
 import "./App.css";
-import { Link } from "react-router-dom";
+import Landing from "./components/Landing";
 
 function App() {
   return (
     /* PAGINA INICIAL */
     <div className="App">
-      <h1>Henry Countries</h1>
-
-      {/* BOTTON PARA IR A COMPONENTE HOME */}
-      <Link to="/s/home">
-        <button>Ingresar</button>
-      </Link>
+     <Landing/>
     </div>
   );
 }
