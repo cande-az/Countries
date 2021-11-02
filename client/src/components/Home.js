@@ -4,14 +4,15 @@ import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import TarjetaPais from "./TarjetaPais";
 import { useDispatch, useSelector } from "react-redux";
-import { axiosPaises } from "../actions/index";
+import { axiosPaises,fetchTodasActividades } from "../actions/index";
 import { orderNombre, orderPoblacion } from "../actions/index";
-import { fetchFilterContinente } from "../actions/index";
+import { fetchFilterContinente,fetchFilterActivity } from "../actions/index";
 import Paginacion from "./Paginacion";
 //import { axiosPaises } from "../actions/index";
 
 function Home() {
   const paises = useSelector((state) => state.paises);
+  const actividades = useSelector((state) => state.actividades);
   const dispatch = useDispatch();
   const [ordenado, setOrdenado] = React.useState("");
   const [continente, setContinente] = React.useState("");
@@ -22,7 +23,12 @@ function Home() {
   const [paisesPerPage, setPaisesPerPage] = React.useState(10);
 
   React.useEffect(() => {
-    dispatch(axiosPaises(setLoading));
+    if (!paises.length) {
+      dispatch(axiosPaises(setLoading));
+    }
+    //eslint-disable-next-line
+      dispatch(fetchTodasActividades())
+    //eslint-disable-next-line
   }, [dispatch]);
 
   //Paginacion
@@ -52,6 +58,7 @@ function Home() {
 
   function handleOnChangeFilt(e) {
     e.preventDefault();
+    console.log(e.target.value);
     if (ordenado.length) {
       dispatch(fetchFilterContinente(e.target.value, true, ordenado));
     } else {
@@ -77,6 +84,11 @@ function Home() {
     console.log(ordenado);
   }
 
+  function handleOnChangeFiltAct(e){
+    e.preventDefault()
+    dispatch(fetchFilterActivity(e.target.value))
+  }
+
   return (
     <div>
       <SearchBar setCurrentPage={setCurrentPage} />
@@ -91,7 +103,7 @@ function Home() {
               handleOnChangeFilt(e);
             }}
           >
-            <option>Elige una opcion</option>
+            <option value="desac">Elige una opcion</option>
             <option>Asia</option>
             <option>Oceania</option>
             <option>Europe</option>
@@ -103,7 +115,12 @@ function Home() {
       </div>
 
       <h5>Tipo de Actividad</h5>
-      <button>dificultad o tipos?</button>
+      <input placeholder="Ingresa una actividad..." list="actividades"
+      onChange={(e) => handleOnChangeFiltAct(e)}/>
+      <datalist id="actividades">
+         {actividades.map((act) => 
+         <option key={act.id}>{act.nombre}</option>)}
+      </datalist>
 
       <div>
         <h4>

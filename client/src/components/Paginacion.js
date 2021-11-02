@@ -18,6 +18,7 @@ function Paginacion({ paisesPerPage, totalPaises, paginar }) {
                     paginar(numero)
                     console.log(numero)
                   }}
+                  //eslint-disable-next-line
                   href={`#${numero}`}
                 >
                   {numero}

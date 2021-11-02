@@ -7,42 +7,47 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 //Componentes
 import Home from "./components/Home";
 import App from "./App";
-import DetallePais from "./components/DetallePais"
-import CrearActividad from "./components/CrearActividad"
-import Header from "./components/Header"
+import DetallePais from "./components/DetallePais";
+import CrearActividad from "./components/CrearActividad";
+import Header from "./components/Header";
 import store from "./store/index.js";
-import { Provider } from 'react-redux';
+import { Provider } from "react-redux";
+import Prueba from "./components/Map.js";
 
 ReactDOM.render(
   <Provider store={store}>
-  <React.StrictMode>
-    <BrowserRouter>
-      <Route path="/s">
-        <Header />
-      </Route>
 
-
-      <Switch>
-
-        <Route exact path="/">
-          <App />
+    <React.StrictMode>
+      <BrowserRouter>
+        <Route path="/s">
+          <Header />
         </Route>
 
-        <Route path="/s/home">
-          <Home />
-        </Route>
+        <Switch>
+          <Route exact path="/">
+            <App />
+          </Route>
 
-        {<Route path="/s/paises/:id">
-          <DetallePais />
-        </Route>}
+          <Route exact path="/test">
+            <Prueba />
+          </Route>
 
-        <Route path='/s/actividades/crear'>
-          <CrearActividad />
-        </Route>
+          <Route path="/s/home">
+            <Home />
+          </Route>
 
-      </Switch>
-    </BrowserRouter>
-  </React.StrictMode>
+          {
+            <Route path="/s/paises/:id">
+              <DetallePais />
+            </Route>
+          }
+
+          <Route path="/s/actividades/crear">
+            <CrearActividad />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </React.StrictMode>
   </Provider>,
   document.getElementById("root")
 );

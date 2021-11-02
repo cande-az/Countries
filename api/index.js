@@ -22,6 +22,7 @@ const { conn } = require('./src/db.js');
 const axios = require("axios");
 const {Country} = require("./src/db.js");
 
+
 // Syncing all the models at once.
 conn.sync({ force: true }).then(async () => {
 

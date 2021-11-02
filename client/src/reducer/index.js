@@ -6,7 +6,10 @@ import {
   ORDER_POBLACION,
   FILTER_CONTINENTE_ORDEN_NAME,
   FILTER_CONTINENTE_ORDEN_POB,
-  FILTER_NAME,
+  FILTER_SEARCH,
+  SELECT_PAIS,
+  FILTER_ACTIVIDAD,
+  GET_ACTIVIDADES,
 } from "../actions/actions-names";
 
 const initialState = {
@@ -14,6 +17,8 @@ const initialState = {
   detallePais: [],
   busqTerm: "",
   buscando: "",
+  paisesSelect: [],
+  actividades: [],
 };
 
 function reducer(state = initialState, action) {
@@ -28,12 +33,33 @@ function reducer(state = initialState, action) {
         ...state,
         detallePais: action.value,
       };
+    case SELECT_PAIS:
+      return {
+        ...state,
+        paisesSelect: action.value,
+      };
+    case FILTER_SEARCH:
+      return {
+        ...state,
+        paises: action.value,
+      };
+    case FILTER_ACTIVIDAD:
+      return {
+        ...state,
+        paises: action.value,
+      };
+    case GET_ACTIVIDADES:
+      return {
+        ...state,
+        actividades: action.value,
+      };
+
+    //FILTROS
     case FILTER_CONTINENTE:
       return {
         ...state,
         paises: action.value,
       };
-
     case FILTER_CONTINENTE_ORDEN_POB:
       let paisesN = action.value;
       let paisContPob =
@@ -142,12 +168,6 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         paises: paisesOrdenadosPOB,
-      };
-
-    case FILTER_NAME:
-      return {
-        ...state,
-        paises: action.value,
       };
 
     default:
