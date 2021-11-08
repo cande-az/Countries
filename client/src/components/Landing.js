@@ -7,7 +7,7 @@ function Landing() {
       <h1>Henry Countries</h1>
 
       {/* BOTTON PARA IR A COMPONENTE HOME */}
-      <Link to="/s/home">
+      <Link to="/home">
         <button>Ingresar</button>
       </Link>
     </div>

@@ -1,32 +1,42 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
+import style from "./TarjetaPais.module.css";
 
-function TarjetaPais({ id,nombre, continente, imgBandera,poblacion }) {
-    
-    function formatPOB(pob){
-        return new Intl.NumberFormat("de-DE").format(pob)
-      }      
-    
-    return (
-        <div>
-            <Link to={`/s/paises/${id}`}>
-                <h2>{nombre}</h2>
-            </Link>
+//1Yqifzyyk9Ic1O5EAxeAEKXgDe4BaofiB
 
+function TarjetaPais({ id, nombre, continente, imgBandera, poblacion }) {
+  function formatPOB(pob) {
+    return new Intl.NumberFormat("de-DE").format(pob);
+  }
 
-            <h4>Continente:</h4>
-            <p>{continente}</p>
+  return (
+    <div className={style.contenedorFondo}>
+      <div className={style.contenedor}>
+        <Link to={`/paises/${id}`}>
+          <div className={style.tag}>
+            <div className={style.contenedorNom}>
+              <h2 className={style.datosNom}>{nombre}</h2>
+            </div>
+          </div>
 
-            <h4>Poblacion:</h4>
-            <p>{formatPOB(poblacion)}</p>
-
-            <h4>Bandera:</h4>
+          <div className={style.pass}>
+            <h4 className={style.passport}>passport</h4>
             <img
-                style={{ width: "5em" }}
-                src={imgBandera}
-                alt={`Bandera de ${nombre}`} />
-        </div>
-    )
+              className={style.bandera}
+              style={{ width: "5em" }}
+              src={imgBandera}
+              alt={`Bandera de ${nombre}`}
+            />
+          </div>
+
+          <p className={style.continenteName}>{continente}</p>
+
+          <h4 className={style.poblacionTitulo}>Poblacion</h4>
+          <p className={style.poblacion}>{formatPOB(poblacion)}</p>
+        </Link>
+      </div>
+    </div>
+  );
 }
 
-export default TarjetaPais
+export default TarjetaPais;

@@ -4,14 +4,12 @@ import {
   FILTER_CONTINENTE,
   ORDER_NOMBRE,
   ORDER_POBLACION,
-  FILTER_CONTINENTE_ORDEN_NAME,
-  FILTER_CONTINENTE_ORDEN_POB,
+  ORDER_DESAC,
   FILTER_SEARCH,
   SELECT_PAIS,
   FILTER_ACTIVIDAD,
-  GET_ACTIVIDADES
+  GET_ACTIVIDADES,
 } from "../actions/actions-names";
-
 
 //Agregar paises
 export function addPaises(paises) {
@@ -65,57 +63,57 @@ export function addPaisesFilter(paises) {
   };
 }
 
-export function addPaisesFilterOrden(paises, ordenado) {
-  if (ordenado.includes("Nombre")) {
-    return {
-      type: FILTER_CONTINENTE_ORDEN_NAME,
-      value: paises,
-      orden: ordenado,
-    };
+export function fetchFilterContinente(
+  continente,
+  orden = false,
+  ordenado = false
+) {
+  if (continente === "desac" || continente === "all") {
+    axiosPaises();
   }
-  if (ordenado.includes("Poblacion")) {
-    return {
-      type: FILTER_CONTINENTE_ORDEN_POB,
-      value: paises,
-      orden: ordenado,
-    };
-  }
-}
-
-export function fetchFilterContinente(continente, orden = false, ordenado) {
-  if (continente === "desac") {
-    return orderNombre(ordenado);
-  } else {
-    return (dispatch) => {
-      fetch(`http://localhost:3004/api/countries?continent=${continente}`)
-        .then((response) => response.json())
-        .then((paises) => {
-          if (orden) {
-            dispatch(addPaisesFilterOrden(paises, ordenado));
-          } else {
-            dispatch(addPaisesFilter(paises));
+  return (dispatch) => {
+    fetch(`http://localhost:3004/api/countries?continent=${continente}`)
+      .then((response) => response.json())
+      .then((paises) => {
+        if (orden) {
+          if (ordenado.includes("Nombre")) {
+            dispatch(orderNombre(ordenado, paises));
+          } else if (ordenado.includes("Poblacion")) {
+            dispatch(orderPoblacion(ordenado, paises));
           }
-        });
-    };
-  }
+        } else {
+          dispatch(addPaisesFilter(paises));
+        }
+      });
+  };
 }
 
 //Ordenamiento
 
 //Nombre Pais
-export function orderNombre(tipo) {
+export function orderNombre(tipo, paises = false) {
+  //si orden es descativado se llama la lista inicial
   return {
     type: ORDER_NOMBRE,
-    value: tipo,
+    orden: tipo,
+    value: paises,
   };
 }
 
 //Poblacion Pais
-export function orderPoblacion(tipo) {
+export function orderPoblacion(tipo, paises = false) {
   return {
     type: ORDER_POBLACION,
-    value: tipo,
+    orden: tipo,
+    value: paises,
   };
+}
+
+//Orden Desactivado
+export function orderDesactiva(continente) {
+  return continente !== "desac" || continente !== "all"
+    ? fetchFilterContinente(continente)
+    : axiosPaises();
 }
 
 //Busqueda
@@ -145,14 +143,49 @@ export function modifiPaisSelect(paises) {
 }
 
 //Filtro Actividades
-export function fetchFilterActivity(activity) {
-  return (dispatch) => {
-    fetch(`http://localhost:3004/api/countries?activity=${activity}`)
-      .then((response) => response.json())
-      .then((paises) => {
-        dispatch(actividadesFilter(paises));
-      });
-  };
+export function fetchFilterActivity(
+  activity,
+  setLoading,
+  continente = false,
+  orden = false
+) {
+  setLoading(true);
+  if (continente) {
+    return (dispatch) => {
+      fetch(
+        `http://localhost:3004/api/countries?activity=${activity}&continent=${continente}`
+      )
+        .then((response) => response.json())
+        .then((paises) => {
+          if (orden) {
+            if (orden.includes("Nombre")) {
+              dispatch(orderNombre(orden, paises));
+            } else if (orden.includes("Poblacion")) {
+              dispatch(orderPoblacion(orden, paises));
+            }
+          } else if (orden === "desc") {
+            dispatch(actividadesFilter(paises));
+          } else {
+            dispatch(actividadesFilter(paises));
+          }
+        })
+        .then(() => {
+          setLoading(false);
+        });
+    };
+  } else {
+    return (dispatch) => {
+      fetch(`http://localhost:3004/api/countries?activity=${activity}`)
+        .then((response) => response.json())
+        .then((paises) => {
+          console.log("Entro");
+          dispatch(actividadesFilter(paises));
+        })
+        .then(() => {
+          setLoading(false);
+        });
+    };
+  }
 }
 
 export function fetchTodasActividades() {

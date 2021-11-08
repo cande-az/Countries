@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Permanent+Marker&display=swap");
+
+:root {
+  /* Principales */
+  --color-arena: #f6d4b7;
+  --color-amarillo: #fdca91;
+  --color-base-oscuro: #25464c;
+  --color-base-claro: #8daaa6;
+  --color-salmon: #eaaf8d;
+  --color-gris-claro: #f1f1f1;
+  --color-celeste-claro: #cbd8d6;
+  /* var(--coral) */
+
+  /* fonts */
+  --SansPro: "Source Sans Pro", sans-serif;
+  --Caveat: "Caveat", cursive;
+}
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+}

@@ -3,8 +3,12 @@ const { Country, Activity } = require("../db");
 const app = express.Router();
 
 //prueba
-app.get("/p", (req, res) => {
-  res.send("hola");
+app.get("/p", async (req, res) => {
+  const paises = await Country.findAll({
+    include: Activity,
+  });
+  let ids = paises.map((p) => p.id);
+  res.send(ids);
 });
 
 app.get("/", async (req, res) => {
@@ -37,24 +41,52 @@ app.get("/", async (req, res) => {
     if (req.query.continent) {
       if (req.query.name) {
         paisesFiltrados[0].continente !== req.query.continent &&
-          paisesFiltrados.shift(); //.push({error: "Ese pais no pertenece a ese continente"})
-      } else {
-        let paisesContinente = paises.filter((pais) =>
-          pais.continente.includes(req.query.continent)
-        );
-        paisesFiltrados.push(paisesContinente);
+          paisesFiltrados.shift();
+      } else if (!req.query.activity) {
+        if (req.query.continent.toLowerCase() === "all" || req.query.continent === "desac") {
+          paisesFiltrados.push(paises);
+        } else {
+          let paisesContinente = paises.filter((pais) =>
+            pais.continente.includes(req.query.continent)
+          );
+          paisesFiltrados.push(paisesContinente);
+        }
       }
     }
 
     //Busqueda por actividades
     if (req.query.activity) {
-      if (req.query.name || req.query.continent) {
-        console.log("sumaste queries");
+      if (req.query.continent) {
+        if (req.query.continent !== "all" || req.query.continent !== "desac") {
+          var paisesContinenteOne = paises.filter((pais) =>
+            pais.continente.includes(req.query.continent)
+          );
+        }
+        console.log(paisesContinenteOne);
+        let paisesActividades = paisesContinenteOne.length
+          ? paisesContinenteOne.filter((pais) => {
+              let busqueda = pais.activities.filter((act) =>
+                act.nombre
+                  .toLowerCase()
+                  .includes(req.query.activity.toLowerCase())
+              );
+              return busqueda.length > 0;
+            })
+          : paises.filter((pais) => {
+              let busqueda = pais.activities.filter((act) =>
+                act.nombre
+                  .toLowerCase()
+                  .includes(req.query.activity.toLowerCase())
+              );
+              return busqueda.length > 0;
+            });
+        paisesFiltrados.push(paisesActividades);
       } else {
         let paisesActividades = paises.filter((pais) => {
           let busqueda = pais.activities.filter((act) =>
-          act.nombre.toLowerCase().includes(req.query.activity.toLowerCase()))
-          return busqueda.length > 0
+            act.nombre.toLowerCase().includes(req.query.activity.toLowerCase())
+          );
+          return busqueda.length > 0;
         });
         paisesFiltrados.push(paisesActividades);
       }
@@ -69,7 +101,6 @@ app.get("/", async (req, res) => {
       res.status(404).send({ message: "No hay resultados" });
     }
   } else {
-
     res.send(paises);
   }
 });

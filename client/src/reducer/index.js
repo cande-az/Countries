@@ -4,8 +4,7 @@ import {
   FILTER_CONTINENTE,
   ORDER_NOMBRE,
   ORDER_POBLACION,
-  FILTER_CONTINENTE_ORDEN_NAME,
-  FILTER_CONTINENTE_ORDEN_POB,
+  ORDER_DESAC,
   FILTER_SEARCH,
   SELECT_PAIS,
   FILTER_ACTIVIDAD,
@@ -60,65 +59,15 @@ function reducer(state = initialState, action) {
         ...state,
         paises: action.value,
       };
-    case FILTER_CONTINENTE_ORDEN_POB:
-      let paisesN = action.value;
-      let paisContPob =
-        action.orden === "Asc-Poblacion"
-          ? paisesN.sort(function (paisA, paisB) {
-              if (paisA.poblacion < paisB.poblacion) {
-                return 1;
-              }
-              if (paisA.poblacion > paisB.poblacion) {
-                return -1;
-              }
-              return 0;
-            })
-          : paisesN.sort(function (paisA, paisB) {
-              if (paisA.poblacion > paisB.poblacion) {
-                return 1;
-              }
-              if (paisA.poblacion < paisB.poblacion) {
-                return -1;
-              }
-              return 0;
-            });
-      return {
-        ...state,
-        paises: paisContPob,
-      };
 
-    case FILTER_CONTINENTE_ORDEN_NAME:
-      let paisesP = action.value;
-      let paisContNom =
-        action.orden === "Asc-Nombre"
-          ? paisesP.sort(function (paisA, paisB) {
-              if (paisA.nombre < paisB.nombre) {
-                return 1;
-              }
-              if (paisA.nombre > paisB.nombre) {
-                return -1;
-              }
-              return 0;
-            })
-          : paisesP.sort(function (paisA, paisB) {
-              if (paisA.nombre > paisB.nombre) {
-                return 1;
-              }
-              if (paisA.nombre < paisB.nombre) {
-                return -1;
-              }
-              return 0;
-            });
-      return {
-        ...state,
-        paises: paisContNom,
-      };
+    //ORDER
 
     case ORDER_NOMBRE:
       //ordenamiento por nombre
+      let paisesSetN = action.value ? action.value : state.paises
       let paisesOrdenadosNOM =
-        action.value === "Asc-Nombre"
-          ? state.paises.sort(function (paisA, paisB) {
+        action.orden === "Asc-Nombre"
+          ? paisesSetN.sort(function (paisA, paisB) {
               if (paisA.nombre < paisB.nombre) {
                 return 1;
               }
@@ -127,7 +76,7 @@ function reducer(state = initialState, action) {
               }
               return 0;
             })
-          : state.paises.sort(function (paisA, paisB) {
+          : paisesSetN.sort(function (paisA, paisB) {
               if (paisA.nombre > paisB.nombre) {
                 return 1;
               }
@@ -144,9 +93,10 @@ function reducer(state = initialState, action) {
 
     case ORDER_POBLACION:
       //ordenamiento por poblacion
+      let paisesSetP = action.value ? action.value : state.paises
       let paisesOrdenadosPOB =
-        action.value === "Asc-Poblacion"
-          ? state.paises.sort(function (paisA, paisB) {
+        action.orden === "Asc-Poblacion"
+          ? paisesSetP.sort(function (paisA, paisB) {
               if (paisA.poblacion < paisB.poblacion) {
                 return 1;
               }
@@ -155,7 +105,7 @@ function reducer(state = initialState, action) {
               }
               return 0;
             })
-          : state.paises.sort(function (paisA, paisB) {
+          : paisesSetP.sort(function (paisA, paisB) {
               if (paisA.poblacion > paisB.poblacion) {
                 return 1;
               }

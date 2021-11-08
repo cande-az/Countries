@@ -1,0 +1,126 @@
+/* VALIJA */
+.contenedor {
+  margin: 10px auto;
+  border-radius: 5px;
+  /* border: 1px solid #999; */
+  background: url("../img/svg/valija.svg");
+  padding: 13px;
+  width: 24em;
+  height: 18em;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: relative;
+}
+
+.contenedorFondo {
+  background-color: var(--color-gris-claro);
+  border-radius: 3em;
+  margin: 0.5em;
+}
+
+.contenedor img {
+  margin-block: 1em;
+}
+
+/* TAG */
+.tag {
+  height: 13em;
+  width: 8em;
+  background: url("../img/svg/tag.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 2em;
+  right: 1.7em;
+}
+
+.tag img {
+  size: 100%;
+}
+
+.contenedorNom {
+  position: absolute;
+  top: 3.3em;
+  left: 1.5em;
+  height: 7em;
+  width: 5em;
+  transform: rotate(-8deg);
+  /*   background-color: tomato; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.datosNom {
+  /* background-color: green; */
+  text-align: center;
+  font-weight: 400;
+  color: var(--color-salmon);
+  font-size: 1.1em;
+  font-family: Caveat, cursive;
+}
+
+/* PASS */
+.pass {
+  height: 10em;
+  width: 20em;
+  background: url("../img/svg/pasaporte.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 8em;
+  left: 1.4em;
+}
+
+.pass img {
+  size: 100%;
+}
+
+.passport{
+  position: absolute;
+  top: 4.55em;
+  left: 0.8em;
+  font-size:1.2em;
+  transform: rotate(5deg);
+  color:var(--color-celeste-claro);
+  font-weight: 500;
+  font-stretch: extra-condensed;
+  text-transform: uppercase;
+}
+
+.bandera {
+  position: absolute;
+  top: 1.3em;
+  left: 1.6em;
+  transform: rotate(5deg);
+}
+
+.continenteName {
+  position: absolute;
+  font-family: "Permanent Marker", sans-serif;
+  color: var(--color-base-oscuro);
+  top: 6.55em;
+  left: 11em;
+  transform: rotate(-10deg);
+}
+
+.poblacionTitulo {
+  position: absolute;
+  top: 11.7em;
+  left: 15.4em;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  color:var(--color-base-oscuro);
+}
+
+.poblacion {
+  position: absolute;
+  top: 12em;
+  left: 12em;
+  color:var(--color-base-oscuro);
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+/* responsive */

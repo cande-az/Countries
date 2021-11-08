@@ -1,0 +1,42 @@
+@media only screen and (max-width: 700px) {
+    .searchContainer {
+        margin-top: 5vh;
+        width: 100vw;
+        height: 10vh;
+    }
+    .searchInput{
+        height: 5vh;
+        width: 80vw;
+    }
+
+    .searchIcon {
+        height: 5vh;
+        width: 5vh;
+    }
+}
+
+
+.searchContainer {
+/*     position: absolute; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+/*     top:1.3em;
+    right: 12em; */
+  }
+  
+  .searchIcon {
+    padding: 1em;
+    text-transform: capitalize;
+    font-style: italic;
+    height: 3.5vh;
+    width: 3.5vh;
+  }
+  
+  .searchInput {
+    border-radius: 1em;
+    background-color: var(--color-base-oscuro);
+    border: 0;
+    height: 3vh;
+    width: 15vw;
+  }

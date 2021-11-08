@@ -1,0 +1,199 @@
+/* font-family: 'Caveat', cursive;
+font-family: 'Permanent Marker', cursive; */
+
+/* GENERALES */
+.bodyGEN {
+  /* background: url("../img/fondo.svg"); */
+  background-color: var(white);
+/*   display: flex;
+  flex-direction: column; */
+}
+
+/* HEADER */
+
+
+.headerComplete {
+  position: relative;
+  height:55vh;
+  width: 100%;
+  margin-bottom: 3em;
+  
+}
+
+.headerBack {
+  background-color: var(--color-gris-claro);
+  width: 100%;
+  height: 25vh;
+}
+
+.header {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  top: 2em;
+}
+
+.ilustracion{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+}
+
+.siluet {
+  display: block;
+  height: 50vh;
+  min-width: 100vw;
+  margin-top: -20vh;
+  background: url("../img/svg/siluetas-monumentos.svg");
+  background-repeat: no-repeat;
+  backface-visibility: initial;
+  background-size: auto 100%;
+}
+
+.siluetLine {
+  background-color: var(--color-salmon);
+  height: 1.3em;
+  margin-top: -1.2em;
+}
+
+.headerIcono {
+  height: 12em;
+  width: 24em;
+  background: url("../img/svg/logo-proxima-aventura.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+/* BODY */
+
+.bodyGen {
+  display: flex;
+  margin-inline-start: 8vw;
+  margin-inline-end: 8vw;
+}
+
+/* FILTROS */
+.FiltrosCont {
+  display: flex;
+  border-radius: 2em;
+  justify-content: space-around;
+  background-color: var(--color-gris-claro);
+  background-size: initial;
+  margin-inline-start: 0.5em;
+  margin-inline-end: 1em;
+}
+
+.filtAling {
+  display: flex;
+  height: 3em;
+}
+
+/* tiene los paises y la paginacion */
+.paisesCont {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin-inline-start: 1em;
+  margin-inline-end: 1em;
+}
+
+/* es el contenedor de los paises */
+.tarjetasPaiCont {
+  margin-top: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.actividadesCont {
+  display: flex;
+  width: 25%;
+  flex-direction: column;
+}
+
+/* ACTIVIDADES */
+.actividadesTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3em;
+}
+
+.titleAct {
+  color: var(--color-base-oscuro);
+  font-family: var(--Caveat);
+  font-size: 2em;
+}
+
+.buttonOrange {
+  border-radius: 2.5em;
+  border: 0;
+  padding: 1em;
+  color: var(--color-base-oscuro);
+  background-color: var(--color-arena);
+  font-weight: 600;
+}
+
+/* PAGINACION */
+.paginacion{
+  display: flex;
+  align-self: center;
+}
+
+.number{
+  border: 0em;
+  display: block;
+  background-color: var(--color-salmon);
+  margin-top: 1em;
+  list-style: none;
+  margin-left: 0.2em;
+  padding: 0.3em;
+  width: 1.3em;
+  height: 1.3em;
+  text-align: center;
+  border-radius: 0.5em;
+  color: var(--color-base-oscuro);
+  font-weight: 600;
+}
+
+/*  responsive */
+@media only screen and (max-width: 1343px) {
+  .bodyGen {
+    display: flex;
+    flex-direction: row;
+  }
+  .paisesCont{
+    width: 70%;
+    margin-inline-start: 1em;
+    margin-inline-end: 1em;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .FiltrosCont{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .siluet {
+    height: 30vh;
+    margin-top: -10vh;
+  }
+  .bodyGen {
+    display: flex;
+    flex-direction: column;
+  }
+  .FiltrosCont{
+    display: flex;
+    flex-direction: column;
+  }
+}
+

@@ -205,6 +205,9 @@ function CrearActividad() {
           </ul>
         </section>
 
+        <label>Link Img</label>
+        <input/>
+
         <button type="submit">Crear actividad</button>
         <button onClick={handleOnClickBorrar}>Cancelar</button>
       </form>

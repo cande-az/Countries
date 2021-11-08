@@ -1,0 +1,22 @@
+.numberList{
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    padding: 0em;
+}
+
+.number{
+    background-color: var(--color-salmon);
+    list-style: none;
+    margin-left: 0.2em;
+    padding: 0.3em;
+    width: 1.3em;
+    height: 1.3em;
+    text-align: center;
+    border-radius: 0.5em;
+}
+
+.numberText{
+    color: var(--color-base-oscuro);
+    font-weight: 600;
+}

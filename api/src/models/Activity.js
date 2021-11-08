@@ -19,6 +19,13 @@ module.exports = (sequelize) => {
     },
     temporada:{
       type: DataTypes.ENUM('Verano', 'Otoño', 'Invierno', 'Primavera')
+    },
+    imagen_identificatoria: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate:{
+        isUrl: true
+      }
     }
   },{
     timestamps: false

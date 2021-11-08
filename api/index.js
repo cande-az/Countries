@@ -40,6 +40,7 @@ conn.sync({ force: true }).then(async () => {
     subregion: pais.subregion,
     area: pais.area,
     poblacion: pais.population,
+    coordenadas: pais.latlng
   }));
 
   await Country.bulkCreate(countriesApiFiltered);

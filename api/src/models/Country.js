@@ -39,6 +39,9 @@ module.exports = (sequelize) => {
     },
     poblacion:{
       type: DataTypes.INTEGER
+    },
+    coordenadas:{
+      type: DataTypes.ARRAY(DataTypes.DECIMAL)
     }
   },{
     timestamps: false
