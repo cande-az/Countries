@@ -22,10 +22,7 @@ module.exports = (sequelize) => {
     },
     imagen_identificatoria: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate:{
-        isUrl: true
-      }
+      defaultValue: "https://www.pinionegypt.com/thumb/resize,1800x1800,no_img.jpg",
     }
   },{
     timestamps: false

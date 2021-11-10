@@ -1,20 +1,21 @@
-.bodyAct{
+.bodyAct {
   display: flex;
+  height: 100vh;
 }
 
-.panel{
+.panel {
   display: flex;
   flex-direction: column;
-  height: 94vh;
+  height: -webkit-fill-available;
   background-color: var(--color-gris-claro);
-  padding: 2em;
+  padding: 1em 2em;
   border-radius: 0em 4em 4em 0em;
   width: 30vw;
-  align-items: center
+  align-items: center;
 }
 
-.backButton{
-  position:absolute;
+.backButton {
+  position: absolute;
   background: url("../img/svg/back-arrow.svg");
   background-size: contain;
   background-repeat: no-repeat;
@@ -23,31 +24,36 @@
   left: 1.5em;
 }
 
-.polaroid{
-  margin-top: 4em;
-  background: url("../img/svg/polaroid.svg");
+.polaroid {
+  margin-top: 2em;
+  background: url("../img/png/polaroid.png");
   background-size: contain;
   background-repeat: no-repeat;
-  width: 40em;
-  height: 40em;
+  padding: 0em;
+  width: 24em;
+  height: 22em;
   position: relative;
+  margin-bottom: 0.5em;
 }
 
-.bandera{
+.bandera {
   position: absolute;
-  top: 10.4em;
-  left: 14.5em;
-  width: 7em;
+  top: 7em;
+  left: 8.2em;
+  width: 8em;
   transform: rotate(-8deg);
 }
 
-.datosPais{
+.datosPais {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0.5em;
+  height: 15vh;
+  justify-content: space-between;
 }
 
-.countryName{
+.countryName {
   font-size: 2.6em;
   font-family: var(--Caveat);
   padding: 0.5em 1.5em;
@@ -56,7 +62,7 @@
   color: var(--color-base-oscuro);
 }
 
-.continenteName{
+.continenteName {
   margin-top: -1em;
   text-transform: uppercase;
   font-weight: 600;
@@ -68,17 +74,18 @@
   background-color: var(--color-base-oscuro);
 }
 
-.marcoMaps{
+.marcoMaps {
   padding: 0.8em;
   width: fit-content;
   background-color: white;
   transform: rotate(-4deg);
   position: relative;
   margin-top: 2em;
+  margin-bottom: 0em;
 }
 
-.cinta1{
-  position:absolute;
+.cinta1 {
+  position: absolute;
   background: url("../img/svg/cinta.svg");
   background-size: contain;
   background-repeat: no-repeat;
@@ -88,8 +95,8 @@
   height: 4em;
 }
 
-.cinta2{
-  position:absolute;
+.cinta2 {
+  position: absolute;
   background: url("../img/svg/cinta.svg");
   background-size: contain;
   background-repeat: no-repeat;
@@ -99,13 +106,13 @@
   height: 3em;
 }
 
-.panelDerecha{
+.panelDerecha {
   display: flex;
   flex-direction: column;
   margin: 3em;
 }
 
-.panelDetail{
+.panelDetail {
   background: url("../img/svg/papel-rosa.svg");
   background-size: contain;
   background-repeat: no-repeat;
@@ -114,37 +121,36 @@
   position: relative;
 }
 
-.detalles{
+.detalles {
   position: absolute;
   list-style: none;
   font-family: var(--Caveat);
   font-size: 2.3em;
   left: 0.4em;
   bottom: 1.7em;
-  line-height : 1.2em;
+  line-height: 1.2em;
 }
 
-.actividadTitulo{
+.actividadTitulo {
   color: var(--color-base-oscuro);
   font-family: var(--Caveat);
   font-size: 2em;
 }
 
-.contenedorActividades{
+.contenedorActividades {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
 .imagen {
-  width:100%;
+  width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
   border-radius: 2.2em;
   filter: grayscale(100%);
 }
-
 
 .tarjetaAct {
   border-radius: 2.2em;
@@ -153,7 +159,6 @@
   position: relative;
   margin: 0em 1em 1em 0em;
 }
-
 
 .tag {
   position: absolute;
@@ -175,28 +180,28 @@
 }
 
 .tag p {
-    color:var(--color-base-oscuro);
-    font-family: var(--Caveat);
-    font-size: 1.15em;
-    margin-left: 0.2em;
-    padding: 0.5em;
-    border-radius: 2em;
-    width: auto;
-    text-align: center;
-    justify-content: flex-start;
+  color: var(--color-base-oscuro);
+  font-family: var(--Caveat);
+  font-size: 1.15em;
+  margin-left: 0.2em;
+  padding: 0.5em;
+  border-radius: 2em;
+  width: auto;
+  text-align: center;
+  justify-content: flex-start;
 }
 
-.tags{
-    position: absolute;
-    display: flex;
-    left: 1.3em;
-    top: -0.5em;
+.tags {
+  position: absolute;
+  display: flex;
+  left: 1.3em;
+  top: -0.5em;
 }
 
-.difi{
-    background-color:var(--color-amarillo) ;
+.difi {
+  background-color: var(--color-amarillo);
 }
 
-.temp{
-    background-color:var(--color-base-claro) ;
+.temp {
+  background-color: var(--color-base-claro);
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import style from './Paginacion.module.css'
 
-function Paginacion({ paisesPerPage, totalPaises, paginar }) {
+function Paginacion({ paisesPerPage, totalPaises, paginar,currentPage }) {
   const numerosPaginas = [];
 
   for (let i = 1; i <= Math.ceil(totalPaises / paisesPerPage); i++) {
@@ -13,7 +13,7 @@ function Paginacion({ paisesPerPage, totalPaises, paginar }) {
         {numerosPaginas.map((numero) => {
             return (
                 <li key={numero}
-                className={style.number}>
+                className={currentPage === numero ? style.numberActive : style.number}>
                 <a
                   onClick={() => {
                     paginar(numero)
@@ -21,7 +21,7 @@ function Paginacion({ paisesPerPage, totalPaises, paginar }) {
                   }}
                   //eslint-disable-next-line
                   href={`#a`}
-                  className={style.numberText}
+                  className={currentPage === numero ? style.numberTextActive : style.numberText}
                 >
                   {numero}
                 </a>

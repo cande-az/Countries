@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import style from "./TarjetaPais.module.css";
 
 //1Yqifzyyk9Ic1O5EAxeAEKXgDe4BaofiB
@@ -23,7 +23,6 @@ function TarjetaPais({ id, nombre, continente, imgBandera, poblacion }) {
             <h4 className={style.passport}>passport</h4>
             <img
               className={style.bandera}
-              style={{ width: "5em" }}
               src={imgBandera}
               alt={`Bandera de ${nombre}`}
             />

@@ -32,16 +32,24 @@ module.exports = (sequelize) => {
       defaultValue:'No Declarada'
     },
     subregion:{
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      defaultValue:'No Declarada',
+      allowNull: false,
     },
     area:{
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue:0
     },
     poblacion:{
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue:0
     },
     coordenadas:{
-      type: DataTypes.ARRAY(DataTypes.DECIMAL)
+      type: DataTypes.ARRAY(DataTypes.DECIMAL),
+      allowNull: false,
+      defaultValue:[0],
     }
   },{
     timestamps: false

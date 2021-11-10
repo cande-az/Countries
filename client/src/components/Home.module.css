@@ -3,27 +3,23 @@ font-family: 'Permanent Marker', cursive; */
 
 /* GENERALES */
 .bodyGEN {
-  /* background: url("../img/fondo.svg"); */
   background-color: var(white);
-/*   display: flex;
-  flex-direction: column; */
 }
 
 /* HEADER */
 
-
 .headerComplete {
   position: relative;
-  height:55vh;
+  height: 55vh;
   width: 100%;
   margin-bottom: 3em;
-  
 }
 
 .headerBack {
   background-color: var(--color-gris-claro);
   width: 100%;
   height: 25vh;
+  width: 100%;
 }
 
 .header {
@@ -34,28 +30,29 @@ font-family: 'Permanent Marker', cursive; */
   top: 2em;
 }
 
-.ilustracion{
+.ilustracion {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 98vw;
 }
 
 .siluet {
   display: block;
-  height: 50vh;
-  min-width: 100vw;
+  width: 99.22vw;
+  height: 48vh;
   margin-top: -20vh;
-  background: url("../img/svg/siluetas-monumentos.svg");
+  background: url("../img/svg/silueta-2560.svg");
   background-repeat: no-repeat;
   backface-visibility: initial;
   background-size: auto 100%;
 }
 
-.siluetLine {
+/* .siluetLine {
   background-color: var(--color-salmon);
   height: 1.3em;
   margin-top: -1.2em;
-}
+
+} */
 
 .headerIcono {
   height: 12em;
@@ -71,22 +68,113 @@ font-family: 'Permanent Marker', cursive; */
   display: flex;
   margin-inline-start: 8vw;
   margin-inline-end: 8vw;
+  justify-content: space-between;
 }
 
 /* FILTROS */
 .FiltrosCont {
   display: flex;
   border-radius: 2em;
-  justify-content: space-around;
+  justify-content: space-evenly;
   background-color: var(--color-gris-claro);
   background-size: initial;
   margin-inline-start: 0.5em;
   margin-inline-end: 1em;
+  padding: 0em 3em;
+  width: -webkit-fill-available;
 }
 
 .filtAling {
   display: flex;
   height: 3em;
+  align-items: center;
+  width: -webkit-fill-available;
+  justify-content: space-between;
+}
+
+.tituloFilter {
+  font-size: 1em;
+  color: var(--color-base-oscuro);
+  padding: 0em 1em;
+}
+
+.selectedFilter {
+  border-radius: 2em;
+  padding: 0.2em 0.3em 0.2em 0.4em;
+  border: 0em;
+  color: var(--color-base-claro);
+  background-color: var(--color-base-oscuro);
+  outline: none;
+  width: -webkit-fill-available;
+}
+
+.selectedFilter:hover {
+  transform: scale(1.02);
+  color: var(--color-arena);
+  border: 0.12em dashed var(--color-arena);
+}
+
+.dataFilter {
+  border-radius: 2em;
+  padding: 0.2em 0.3em 0.2em 0.4em;
+  border: 0em;
+  color: var(--color-base-claro);
+  background-color: var(--color-base-oscuro);
+  outline: none;
+  width: -webkit-fill-available;
+  height: 1.6em;
+}
+
+.dataFilter:hover {
+  transform: scale(1.02);
+  color: var(--color-arena);
+  border: 0.12em dashed var(--color-arena);
+}
+
+.dataFilter:hover::placeholder {
+  padding: 0.3em 0.3em 0em 0.3em;
+  color: var(--color-arena);
+}
+
+.dataFilter::placeholder {
+  padding: 0.3em 0.3em 0em 0.3em;
+  color: var(--color-base-claro);
+}
+
+.borrarButton {
+  color: var(--color-base-oscuro);
+  margin: 0em 1em;
+  padding: 0.1em 0.7em;
+  border-radius: 2em;
+  font-size: 1em;
+  width: auto;
+  height: 2em;
+  text-align: center;
+  justify-content: flex-start;
+  font-weight: 600;
+  text-transform: capitalize;
+  background-color: var(--color-base-claro);
+  border: none;
+}
+
+.borrarButtonHide {
+  display: none;
+}
+
+.eliminarButton {
+  color: var(--color-base-oscuro);
+  margin: 0em 1em;
+  padding: 0.1em 0.7em;
+  border-radius: 2em;
+  font-size: 0.9em;
+  width: auto;
+  height: 2em;
+  text-align: center;
+  justify-content: flex-start;
+  font-weight: 600;
+  text-transform: capitalize;
+  background-color: var(--color-salmon);
+  border: none;
 }
 
 /* tiene los paises y la paginacion */
@@ -106,10 +194,17 @@ font-family: 'Permanent Marker', cursive; */
   justify-content: space-around;
 }
 
+.textError {
+  font-family: var(--Caveat);
+  color: var(--color-base-oscuro);
+  font-size: 2em;
+}
+
 .actividadesCont {
   display: flex;
   width: 25%;
   flex-direction: column;
+  padding: 0.1em;
 }
 
 /* ACTIVIDADES */
@@ -118,12 +213,14 @@ font-family: 'Permanent Marker', cursive; */
   justify-content: space-between;
   align-items: center;
   height: 3em;
+  margin-bottom: 0.8em;
 }
 
 .titleAct {
   color: var(--color-base-oscuro);
   font-family: var(--Caveat);
   font-size: 2em;
+  margin: 0em;
 }
 
 .buttonOrange {
@@ -135,13 +232,19 @@ font-family: 'Permanent Marker', cursive; */
   font-weight: 600;
 }
 
+.buttonOrange:hover {
+  transform: scale(1.08);
+  background-color: var(--color-base-oscuro);
+  color: var(--color-arena);
+}
+
 /* PAGINACION */
-.paginacion{
+.paginacion {
   display: flex;
   align-self: center;
 }
 
-.number{
+.number {
   border: 0em;
   display: block;
   background-color: var(--color-salmon);
@@ -157,43 +260,83 @@ font-family: 'Permanent Marker', cursive; */
   font-weight: 600;
 }
 
+.number:hover{
+  color: var(--color-salmon);
+  background-color: var(--color-base-oscuro);
+}
+
 /*  responsive */
-@media only screen and (max-width: 1343px) {
-  .bodyGen {
-    display: flex;
-    flex-direction: row;
+@media only screen and (max-width: 1441px) {
+  .paisesCont {
+    width: 65%;
   }
-  .paisesCont{
-    width: 70%;
-    margin-inline-start: 1em;
-    margin-inline-end: 1em;
+  .actividadesCont {
+    width: 35%;
   }
 }
 
-@media only screen and (max-width: 800px) {
-  .FiltrosCont{
+@media only screen and (max-width: 1288px) {
+  .FiltrosCont {
     display: flex;
     flex-direction: column;
   }
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 770px) {
+  .bodyGen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: -webkit-fill-available;
+  }
+  .paisesCont {
+    width: 100%;
+    margin-inline-start: 1em;
+    margin-inline-end: 1em;
+  }
+  .actividadesCont {
+    width: 100%;
+  }
+  .siluet {
+    background: url("../img/svg/silueta-768.svg");
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+  }
+  .headerIcono {
+    height: 8em;
+    width: 18em;
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .paisesCont {
+    width: -webkit-fill-available;
+  }
   .header {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   .siluet {
-    height: 30vh;
-    margin-top: -10vh;
+    background: url("../img/svg/silueta-320.svg");
+    background-size: auto 100%;
+    background-repeat: no-repeat;
   }
   .bodyGen {
+    width: -webkit-fill-available;
     display: flex;
     flex-direction: column;
   }
-  .FiltrosCont{
+  .FiltrosCont {
     display: flex;
     flex-direction: column;
+    width: 17em;
   }
 }
 
+@media only screen and (max-width: 376px) {
+  .bodyGen {
+    margin-inline-start: 1.5vw;
+    margin-inline-end: 1.5vw;
+  }
+}

@@ -9,6 +9,8 @@ import style from "./DetallePais.module.css";
 function CompletoPais() {
   const { id } = useParams();
   const pais = useSelector((state) => state.detallePais);
+
+  document.title = `${pais.nombre}`;
   const dispatch = useDispatch();
   const [actividades, setActividades] = React.useState([]);
   const [cargando, setCargando] = React.useState(true);
@@ -20,8 +22,6 @@ function CompletoPais() {
     }
     //eslint-disable-next-line
   }, [dispatch, id, cargando, pais.length]);
-
-  //
 
   function arreglaCapital(cap) {
     if (typeof cap === "string") {
@@ -88,6 +88,7 @@ function CompletoPais() {
                         src={act.imagen_identificatoria}
                         /* style={{ width: "24em" }} */
                         className={style.imagen}
+                        alt={`Imagen de ${act.nombre}`}
                       />
                       <div className={style.tag}>
                         <h5 className={style.actividad}>{act.nombre}</h5>

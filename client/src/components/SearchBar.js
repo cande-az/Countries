@@ -1,6 +1,6 @@
 import React from "react";
 import { fetchFilterName } from "../actions/index";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import style from "./SearchBar.module.css"
 
 import iconSearch from "../img/svg/icono-search.svg"
@@ -22,10 +22,11 @@ function SearchBar({setCurrentPage,limpiaFiltros}) {
             HandleOnChange(e);
           }}
           className={style.searchInput}
+          placeholder="Escribe el nombre de un pais..."
         ></input>
       </form>
-      <img src={iconSearch} className={style.searchIcon}/>
-      {/* <button>buscar</button> */}
+      <img src={iconSearch} className={style.searchIcon}
+      alt="Busqueda Icono"/>
     </div>
   );
 }

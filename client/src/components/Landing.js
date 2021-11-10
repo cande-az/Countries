@@ -1,16 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import style from "./Landing.module.css";
 
 function Landing() {
   return (
-    <div>
-      <h1>Henry Countries</h1>
-
-      {/* BOTTON PARA IR A COMPONENTE HOME */}
+    <>
+      <div className={style.headerIcono}></div>
       <Link to="/home">
-        <button>Ingresar</button>
+        <button className={style.button}>Ingresar</button>
       </Link>
-    </div>
+      <div className={style.contMundo}>
+        <div className={style.mundo}></div>
+        <div className={style.avionD}></div>
+        <div className={style.avionI}></div>
+      </div>
+    </>
   );
 }
 

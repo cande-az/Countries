@@ -12,6 +12,11 @@
   position: relative;
 }
 
+.contenedorFondo:hover {
+  transform: scale(1.015);
+  border: 0.15em dashed var(--color-arena);
+}
+
 .contenedorFondo {
   background-color: var(--color-gris-claro);
   border-radius: 3em;
@@ -76,13 +81,13 @@
   size: 100%;
 }
 
-.passport{
+.passport {
   position: absolute;
-  top: 4.55em;
+  top: 5.8em;
   left: 0.8em;
-  font-size:1.2em;
+  font-size: 1.2em;
   transform: rotate(5deg);
-  color:var(--color-celeste-claro);
+  color: var(--color-celeste-claro);
   font-weight: 500;
   font-stretch: extra-condensed;
   text-transform: uppercase;
@@ -90,9 +95,10 @@
 
 .bandera {
   position: absolute;
-  top: 1.3em;
-  left: 1.6em;
+  top: 0.8em;
+  left: 1.45em;
   transform: rotate(5deg);
+  width: 5em;
 }
 
 .continenteName {
@@ -111,16 +117,63 @@
   font-weight: 600;
   text-transform: uppercase;
   font-size: 0.8em;
-  color:var(--color-base-oscuro);
+  color: var(--color-base-oscuro);
 }
 
 .poblacion {
   position: absolute;
   top: 12em;
   left: 12em;
-  color:var(--color-base-oscuro);
+  color: var(--color-base-oscuro);
   font-size: 0.9em;
   font-weight: 600;
 }
 
 /* responsive */
+@media only screen and (max-width: 1377px) {
+  .contenedor {
+    width: 15em;
+    height: 10em;
+  }
+  .pass {
+    top: 3.8em;
+    left: 1em;
+    height: 7em;
+    width: 7em;
+  }
+  .bandera {
+    width: 3em;
+    left: 1.2em;
+  }
+  .passport {
+    top: 6.6em;
+    font-size: 0.8em;
+  }
+  .tag {
+    top: 1em;
+    left: 10.4em;
+    width: 5.5em;
+  }
+  .poblacionTitulo {
+    font-size: 0.55em;
+    left: 13em;
+  }
+  .poblacion {
+    top: 12.2em;
+    font-size: 0.55em;
+  }
+  .datosNom {
+    font-size: 0.7em;
+    width: 4.4em;
+    /* background-color: tomato; */
+  }
+  .contenedorNom {
+    top: 1em;
+    left: 0.25em;
+  }
+  .continenteName {
+    font-size: 0.82em;
+    top: 4.35em;
+    left: 7.8em;
+  }
+}

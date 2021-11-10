@@ -1,0 +1,129 @@
+.bodyGen {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: -webkit-fill-available;
+  align-items: center;
+  padding-top: 2em;
+}
+
+.headerIcono {
+  height: 12em;
+  width: 24em;
+  background: url("../img/svg/logo-proxima-aventura.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.button {
+  color: var(--color-salmon);
+  margin: 2em 0em 0.87em 0em;
+  padding: 0.1em 0.7em;
+  border-radius: 2em;
+  font-size: 2.1em;
+  width: auto;
+  height: 2em;
+  text-align: center;
+  justify-content: flex-start;
+  font-weight: 600;
+  text-transform: capitalize;
+  background-color: var(--color-base-oscuro);
+  border: none;
+}
+
+.button:hover {
+  color: var(--color-base-oscuro);
+  margin: 2em 0em 0.87em 0em;
+  padding: 0.1em 0.7em;
+  border-radius: 2em;
+  font-size: 2.1em;
+  width: auto;
+  height: 2em;
+  text-align: center;
+  justify-content: flex-start;
+  font-weight: 600;
+  text-transform: capitalize;
+  background-color: var(--color-base-claro);
+  border: none;
+  transform: scale(1.1);
+}
+
+.contMundo {
+  height: 42.5em;
+  width: 85em;
+  overflow: hidden;
+  position: relative;
+}
+
+.avionD {
+  background: url("../img/svg/avion-derecha.svg");
+  background-repeat: no-repeat;
+  transform: rotate(250deg);
+  height: 45em;
+  width: 45em;
+  position: absolute;
+  top: 4em;
+  left: 2em;
+  animation-name: rotation-avion-d;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.avionI {
+    background: url("../img/svg/avion-izquierda.svg");
+    background-repeat: no-repeat;
+    transform: rotate(250deg);
+    height: 45em;
+    width: 45em;
+    position: absolute;
+    top: 4em;
+    right: 3em;
+    animation-name: rotation-avion-i;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+.mundo {
+  height: 85em;
+  width: 85em;
+  margin-bottom: 0em;
+  background: url("../img/svg/MUNDI-SILUETAS.svg");
+  background-repeat: no-repeat;
+  animation-name: rotation;
+  animation-duration: 13s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes rotation-avion-d {
+    0% {
+      transform: rotate(-270deg);
+      opacity: 2%;
+    }
+    100% {
+      transform: rotate(130deg);
+      opacity: 100%;
+    }
+  }
+
+  @keyframes rotation-avion-i {
+    0% {
+      transform: rotate(110deg);
+      opacity: 50%;
+    }
+    100% {
+      transform: rotate(-250deg);
+      opacity: 80%;
+    }
+  }
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

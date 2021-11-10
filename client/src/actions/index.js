@@ -4,7 +4,6 @@ import {
   FILTER_CONTINENTE,
   ORDER_NOMBRE,
   ORDER_POBLACION,
-  ORDER_DESAC,
   FILTER_SEARCH,
   SELECT_PAIS,
   FILTER_ACTIVIDAD,
@@ -109,13 +108,6 @@ export function orderPoblacion(tipo, paises = false) {
   };
 }
 
-//Orden Desactivado
-export function orderDesactiva(continente) {
-  return continente !== "desac" || continente !== "all"
-    ? fetchFilterContinente(continente)
-    : axiosPaises();
-}
-
 //Busqueda
 export function addPaisesSearch(paises) {
   return {
@@ -178,8 +170,17 @@ export function fetchFilterActivity(
       fetch(`http://localhost:3004/api/countries?activity=${activity}`)
         .then((response) => response.json())
         .then((paises) => {
-          console.log("Entro");
-          dispatch(actividadesFilter(paises));
+          if (orden) {
+            if (orden.includes("Nombre")) {
+              dispatch(orderNombre(orden, paises));
+            } else if (orden.includes("Poblacion")) {
+              dispatch(orderPoblacion(orden, paises));
+            }
+          } else if (orden === "desc") {
+            dispatch(actividadesFilter(paises));
+          } else {
+            dispatch(actividadesFilter(paises));
+          }
         })
         .then(() => {
           setLoading(false);
